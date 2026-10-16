@@ -44,7 +44,7 @@
         rejectButtonText: "Not now",
         okButtonColor: "#F6B21A",
         askAgainTimeInSeconds: 5,
-        serviceWorkerPath: cfg.SERVICE_WORKER_PATH || "/clevertap_sw.js"
+        serviceWorkerPath: cfg.SERVICE_WORKER_PATH || "sachin.github.io/clevertap_sw.js"
         // To skip the soft prompt and show the browser's native prompt directly:
         // skipDialog: true
       });
