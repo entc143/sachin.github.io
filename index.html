@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Masala Hour | Small-batch chai</title>
+  <meta name="description" content="Small-batch chai blends, packed in tins and shipped fresh.">
+  <meta name="theme-color" content="#1B2150">
+
+  <!-- Needed for web push on iOS / iPadOS (Add to Home Screen) -->
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- 1. Your CleverTap account ID + region -->
+  <script src="config.js"></script>
+  <!-- 2. CleverTap Web SDK bootstrap -->
+  <script src="clevertap-init.js"></script>
+</head>
+<body>
+  <a class="skip" href="#shop">Skip to shop</a>
+
+  <header class="top">
+    <a class="brand" href="#top" aria-label="Masala Hour home">Masala Hour</a>
+    <nav aria-label="Main">
+      <a href="#shop">Shop</a>
+      <a href="#basket">Basket <span id="cartCount" class="count" aria-label="items in basket">0</span></a>
+      <a href="#push">Push setup</a>
+    </nav>
+    <button id="loginBtn" class="ghost" type="button">Sign in</button>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <h1>Chai worth stepping away for.</h1>
+      <p>Six small-batch blends, ground and tinned the week they ship. Brew one, then tell us when you want the next tin.</p>
+      <a class="btn" href="#shop">Shop blends</a>
+      <div class="tins" aria-hidden="true">
+        <div class="tin" style="--c:#F6B21A"><span>Elaichi</span></div>
+        <div class="tin" style="--c:#D6402C"><span>Masala</span></div>
+        <div class="tin" style="--c:#3E7CB1"><span>Darjeeling</span></div>
+      </div>
+    </section>
+
+    <section id="shop" class="shop">
+      <h2>Blends</h2>
+      <div id="products" class="products"></div>
+    </section>
+
+    <section id="basket" class="basket">
+      <h2>Your basket</h2>
+      <div id="basketBody"></div>
+      <div class="basket-foot">
+        <p id="basketTotal" class="total">Total ₹0</p>
+        <button id="orderBtn" class="btn" type="button" disabled>Place order</button>
+      </div>
+      <p class="hint">This is a demo. No payment is taken. Placing an order sends a <code>Charged</code> event to CleverTap, then offers push notifications.</p>
+    </section>
+
+    <section id="push" class="push">
+      <div class="push-head">
+        <h2>Push notification setup</h2>
+        <p>Checks that run live in your browser. Fix anything marked <strong>Blocked</strong>, then ask for permission.</p>
+      </div>
+
+      <ul id="status" class="status" aria-live="polite"></ul>
+      <p id="iosNote" class="note" hidden>On iPhone and iPad, web push only works after you tap Share, then <strong>Add to Home Screen</strong>, and open the site from that icon.</p>
+
+      <div class="push-actions">
+        <button id="askBtn" class="btn" type="button">Ask for notifications</button>
+        <button id="eventBtn" class="ghost dark" type="button">Send test event</button>
+      </div>
+
+      <h3>Event log</h3>
+      <ol id="log" class="log" aria-live="polite">
+        <li class="empty">Nothing sent yet. Add a blend to the basket to send your first event.</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer>
+    <p>Masala Hour is a sample site for testing CleverTap web push.</p>
+  </footer>
+
+  <dialog id="loginDialog">
+    <form method="dialog" id="loginForm">
+      <h2>Sign in</h2>
+      <p>Identifies you in CleverTap so push messages reach this profile.</p>
+      <label>Name
+        <input name="name" autocomplete="name" required>
+      </label>
+      <label>Email
+        <input name="email" type="email" autocomplete="email" required>
+      </label>
+      <label>Phone <span class="opt">(optional, with country code, like +919800000000)</span>
+        <input name="phone" type="tel" autocomplete="tel" pattern="\+[0-9]{8,15}">
+      </label>
+      <div class="dialog-actions">
+        <button type="button" class="ghost dark" id="loginCancel">Cancel</button>
+        <button type="submit" class="btn">Sign in</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="firebase-init.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
