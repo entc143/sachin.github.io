@@ -23,7 +23,7 @@ window.APP_CONFIG = {
   },
 
   // Firebase console > Project settings > Cloud Messaging > Web Push certificates
-  // > "Generate key pair" (or reuse the one pasted into CleverTap). Public key only.
+  // >Public key only.
   FIREBASE_VAPID_KEY: "BMvZw3-2yIujpa-uBUEm7jqYXgG6DWzPt0GPFirG46AZQHmUwFDR7bihbv0ymTB2b6nXUkd90OwMOOUPjLXOfgE",
 
   // Path where clevertap_sw.js is served. Keep it in the site root.
