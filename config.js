@@ -27,5 +27,8 @@ window.APP_CONFIG = {
   FIREBASE_VAPID_KEY: "BMvZw3-2yIujpa-uBUEm7jqYXgG6DWzPt0GPFirG46AZQHmUwFDR7bihbv0ymTB2b6nXUkd90OwMOOUPjLXOfgE",
 
   // Path where clevertap_sw.js is served. Keep it in the site root.
-  SERVICE_WORKER_PATH: "sachin.github.io/clevertap_sw.js"
+  // For a GitHub Pages project site (https://entc143.github.io/sachin.github.io/),
+  // use an absolute path starting with the repository name so the file resolves
+  // to: https://entc143.github.io/sachin.github.io/clevertap_sw.js
+  SERVICE_WORKER_PATH: "/sachin.github.io/clevertap_sw.js"
 };
