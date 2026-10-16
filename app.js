@@ -5,6 +5,13 @@
   const $ = (sel) => document.querySelector(sel);
   const rupees = (n) => "₹" + n.toLocaleString("en-IN");
 
+  // Determine a sensible default service-worker path so the site works
+  // both as a user site (https://entc143.github.io/) and a project site
+  // (https://entc143.github.io/sachin.github.io/).
+  const firstSegment = location.pathname.split('/').filter(Boolean)[0];
+  const defaultSwPath = firstSegment ? `/${firstSegment}/clevertap_sw.js` : '/clevertap_sw.js';
+  const SW_PATH = cfg.SERVICE_WORKER_PATH || defaultSwPath;
+
   // ------------------------------------------------------------
   // Catalogue
   // ------------------------------------------------------------
@@ -44,7 +51,7 @@
         rejectButtonText: "Not now",
         okButtonColor: "#F6B21A",
         askAgainTimeInSeconds: 5,
-        serviceWorkerPath: cfg.SERVICE_WORKER_PATH || "/clevertap_sw.js"
+        serviceWorkerPath: SW_PATH
         // To skip the soft prompt and show the browser's native prompt directly:
         // skipDialog: true
       });
@@ -244,7 +251,7 @@
     // Service worker file reachable
     let swReachable = false;
     try {
-      const res = await fetch(cfg.SERVICE_WORKER_PATH || "/clevertap_sw.js", { method: "HEAD", cache: "no-store" });
+      const res = await fetch(SW_PATH, { method: "HEAD", cache: "no-store" });
       swReachable = res.ok;
     } catch (_) { /* ignore */ }
     add(swReachable ? "ok" : "bad", "Service worker file",
