@@ -244,7 +244,7 @@
     // Service worker file reachable
     let swReachable = false;
     try {
-      const res = await fetch(cfg.SERVICE_WORKER_PATH || "/clevertap_sw.js", { method: "HEAD", cache: "no-store" });
+      const res = await fetch(cfg.SERVICE_WORKER_PATH || "sachin.github.io/clevertap_sw.js", { method: "HEAD", cache: "no-store" });
       swReachable = res.ok;
     } catch (_) { /* ignore */ }
     add(swReachable ? "ok" : "bad", "Service worker file",
@@ -257,7 +257,7 @@
       try {
         const regs = await navigator.serviceWorker.getRegistrations();
         swRegistered = regs.some((r) => [r.active, r.waiting, r.installing]
-          .some((w) => w && /clevertap_sw/.test(w.scriptURL)));
+          .some((w) => w && sachin.github.io/clevertap_sw/.test(w.scriptURL)));
       } catch (_) { /* ignore */ }
     }
     add(swRegistered ? "ok" : "wait", "Service worker registered",
