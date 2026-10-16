@@ -15,9 +15,6 @@ A small tea shop that shows the full CleverTap web push flow: SDK setup, service
 ## 1. Set up CleverTap (one time)
 
 1. **Generate VAPID keys** (one-time):
-   ```
-   npx web-push generate-vapid-keys
-   ```
    You can also generate a key pair in the Firebase console under Project Settings > Cloud Messaging > Web Configuration.
 2. In the CleverTap dashboard go to **Settings > Engage > Channels > Web Push**.
 3. For each browser you want (Chrome, Firefox, Safari), paste the public and private key, enable it, and click **Save**.
@@ -25,14 +22,6 @@ A small tea shop that shows the full CleverTap web push flow: SDK setup, service
 5. Put both in `config.js`.
 
 ## 2. Run it
-
-From this folder:
-
-```
-python3 -m http.server 8000
-```
-
-Open <http://localhost:8000>. Browsers treat `localhost` as a secure context, so push can work there. If the prompt never appears, serve the folder over HTTPS instead (for example with an HTTPS tunnel or any static host).
 
 ## 3. Test the flow
 
